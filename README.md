@@ -3,40 +3,47 @@
 Sito dell'officina Motopassione, via del Pigneto 5G, Roma.
 
 HTML e CSS statici. Nessun framework, nessun build step, nessuna libreria
-esterna, nessun font caricato da fuori. Si carica su GitHub Pages così
-com'è e funziona subito. Non serve il banner dei cookie perché il sito
-non ne usa e non chiama nessun servizio di terze parti.
+esterna, zero JavaScript. Il carattere è Inter e sta dentro la cartella
+`fonts/`, non viene da Google Fonts: quindi niente richieste a terzi,
+niente cookie e niente banner. Si carica su GitHub Pages così com'è e
+funziona subito.
 
 ## Cosa c'è dentro
 
     index.html                          la pagina principale
     restauri/ducati-250-match1.html     il racconto di un restauro
     style.css                           unico foglio di stile
+    fonts/InterVariable.woff2           il carattere, caricato da qui
     img/                                le foto in webp
     CNAME.txt                           il dominio, da attivare a DNS pronto
 
+Le icone non sono una libreria: sono disegnate a mano in uno sprite SVG
+in cima a ogni pagina e richiamate con `<use>`.
+
 ## Da sistemare prima di mandarlo online
 
-1. **Orari di apertura.** In `index.html`, sezione "Dove siamo", c'è un
-   riquadro giallo con scritto che mancano. Vanno messi lì e anche nel
-   JSON-LD in fondo alla stessa pagina: sotto lo script c'è il blocco
-   `openingHoursSpecification` già pronto da scommentare e correggere.
-2. **Partita IVA.** Nel piede di pagina di tutte e due le pagine c'è
+1. **Partita IVA.** Nel piede di pagina di tutte e due le pagine c'è
    scritto `DA INSERIRE`.
-3. **Coordinate della mappa.** Nel JSON-LD di `index.html` le coordinate
+2. **Coordinate della mappa.** Nel JSON-LD di `index.html` le coordinate
    sono approssimate. Le esatte si prendono da Google Maps: tasto destro
    sul punto dell'officina, il primo valore è la latitudine.
-4. **Indirizzo Facebook.** In `index.html` è messo
+3. **Indirizzo Facebook.** In `index.html` è messo
    `facebook.com/motopassione`, va controllato che sia quello giusto
-   (compare due volte: nel testo dei contatti e nel JSON-LD).
-5. **Foto della Ducati.** La pagina del restauro racconta il lavoro ma le
-   foto della moto non ci sono ancora. Nel file i posti sono già pronti,
-   commentati, con dentro il nome del file che si aspettano. Si salvano
+   (compare due volte: nei contatti e nel JSON-LD).
+4. **Foto della Ducati.** La pagina del restauro racconta il lavoro ma le
+   foto della moto non ci sono. Nel file i posti sono già pronti,
+   commentati, con dentro il nome del file che si aspettano: si salvano
    le foto in `img/` con quel nome e si tolgono i commenti.
-6. **Foto più grandi.** Le foto di adesso arrivano dal vecchio sito e sono
-   480x360 pixel, cioè piccole per gli schermi di oggi. Quando ci sono
-   gli originali conviene rifarle a 1600 pixel di lato lungo e
-   riconvertirle in webp, tenendo gli stessi nomi dei file.
+5. **Foto più grandi.** Le foto di adesso arrivano dal vecchio sito e sono
+   480x360 pixel, piccole per gli schermi di oggi. Quando ci sono gli
+   originali conviene rifarle a 1600 pixel di lato lungo, riconvertirle in
+   webp tenendo gli stessi nomi, e aggiornare i `width` e `height` scritti
+   dentro ai tag `img`.
+
+Gli orari sono già dentro, presi da Google Maps: da lunedì a venerdì
+9:00-13:00 e 15:30-19:30, sabato e domenica chiuso. Se cambiano vanno
+corretti in due posti, nella sezione "Dove siamo" e nel JSON-LD in fondo
+alla pagina.
 
 ## Come si aggiunge un altro restauro
 
