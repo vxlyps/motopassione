@@ -1,0 +1,786 @@
+/* =========================================================================
+   Motopassione - foglio di stile unico
+   Officina moto, via del Pigneto 5G, Roma
+
+   Impostazione grafica: fondo carta, inchiostro scuro, titoli in graziato,
+   un solo rosso usato con parsimonia. Le foto comandano, il testo sta
+   composto sotto. Righine sottili al posto delle cornici.
+
+   Indice:
+     1.  Variabili                       <- si cambia quasi tutto da qui
+     2.  Base
+     3.  Tipografia
+     4.  Impaginazione
+     5.  Fascia informativa e testata
+     6.  Pulsanti e barra contatti
+     7.  Apertura
+     8.  Cosa facciamo
+     9.  Restauro e foto
+    10.  Dal 1983
+    11.  Dove siamo
+    12.  Contatti (blocco scuro)
+    13.  Piede pagina
+    14.  Pagina restauro
+    15.  Segnaposto e utilita
+
+   Mobile first: le regole base valgono per il telefono, i @media
+   aggiungono roba solo dagli schermi larghi in su.
+   ========================================================================= */
+
+
+/* =========================================================================
+   1. VARIABILI
+   ========================================================================= */
+
+:root {
+
+  /* --- colori ---------------------------------------------------------- */
+  --carta:        #e4e3dc;              /* fondo pagina, carta calda */
+  --carta-2:      #dcdbd3;              /* fondo delle sezioni staccate */
+  --carta-viva:   #f2f1ec;              /* testo chiaro sui fondi scuri */
+  --inchiostro:   #14171c;              /* nero morbido, non nero pieno */
+  --ink-70:       rgba(20, 23, 28, 0.70);  /* testo secondario */
+  --ink-50:       rgba(20, 23, 28, 0.50);  /* didascalie */
+  --riga:         rgba(20, 23, 28, 0.16); /* righine sottili */
+  --riga-scura:   rgba(20, 23, 28, 0.34); /* righine in evidenza */
+  --rosso:        #b3241c;              /* unico accento */
+  --giallo:       #8a6a12;              /* solo per i segnaposto */
+
+  /* --- caratteri ------------------------------------------------------- */
+  /* Nessun font scaricato da fuori: si usa il graziato di sistema per i
+     titoli (New York su Apple, Georgia su Windows) e il bastone di sistema
+     per il testo corrente. Zero richieste, zero cookie. */
+  --serif: ui-serif, "New York", Georgia, "Times New Roman", serif;
+  --sans:  system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+
+  --t-corpo:    1.0625rem;
+  --t-piccolo:  0.9375rem;
+  --t-micro:    0.75rem;
+  --t-lead:     clamp(1.1875rem, 4.2vw, 1.5rem);
+  --t-h3:       clamp(1.25rem, 4vw, 1.5rem);
+  --t-h2:       clamp(2rem, 7.4vw, 3.5rem);
+  --t-h1:       clamp(2.5rem, 11.5vw, 5.5rem);
+
+  /* --- spazi ----------------------------------------------------------- */
+  --sp-xs:  0.5rem;
+  --sp-s:   1rem;
+  --sp-m:   1.5rem;
+  --sp-l:   2.5rem;
+  --sp-xl:  4rem;
+  --sezione: clamp(4rem, 11vw, 8rem);
+
+  /* --- misure ---------------------------------------------------------- */
+  --larghezza:  72rem;
+  --stretto:    36rem;
+  --margine:    1.375rem;
+  --raggio:     2px;
+  --barra:      4.25rem;   /* barra contatti in fondo, solo telefono */
+}
+
+
+/* =========================================================================
+   2. BASE
+   ========================================================================= */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  background: var(--carta);
+  -webkit-text-size-adjust: 100%;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+}
+
+body {
+  margin: 0;
+  background: var(--carta);
+  color: var(--inchiostro);
+  font-family: var(--sans);
+  font-size: var(--t-corpo);
+  line-height: 1.62;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  padding-bottom: calc(var(--barra) + env(safe-area-inset-bottom, 0px));
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a { color: inherit; }
+
+:where(h1, h2, h3, p, ul, ol, figure, table) { margin: 0; }
+
+:focus-visible {
+  outline: 2px solid var(--rosso);
+  outline-offset: 3px;
+}
+
+:target { scroll-margin-top: var(--sp-l); }
+
+
+/* =========================================================================
+   3. TIPOGRAFIA
+   ========================================================================= */
+
+h1, h2 {
+  font-family: var(--serif);
+  font-weight: 400;              /* il graziato regge da solo, niente grassetto */
+  line-height: 1.04;
+  letter-spacing: -0.015em;
+  text-wrap: balance;
+}
+
+h1 { font-size: var(--t-h1); }
+h2 { font-size: var(--t-h2); }
+
+h3 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: var(--t-h3);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+p { text-wrap: pretty; }
+
+/* Etichetta di sezione: sta appoggiata su una righina, in alto.
+   Volutamente non rossa: il rosso serve solo per chiamare e per il resto
+   sta zitto. */
+.etichetta {
+  display: block;
+  padding-top: 0.875rem;
+  border-top: 1px solid var(--riga-scura);
+  margin-bottom: var(--sp-l);
+  font-size: var(--t-micro);
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-50);
+}
+
+.lead {
+  font-size: var(--t-lead);
+  line-height: 1.45;
+  color: var(--ink-70);
+}
+
+.lead strong {
+  color: var(--inchiostro);
+  font-weight: 600;
+}
+
+.testo-soft { color: var(--ink-70); }
+
+.misura   { max-width: var(--stretto); }
+.misura-l { max-width: 44rem; }
+
+.prosa > * + * { margin-top: var(--sp-s); }
+.prosa strong { font-weight: 600; color: var(--inchiostro); }
+
+
+/* =========================================================================
+   4. IMPAGINAZIONE
+   ========================================================================= */
+
+.wrap {
+  width: min(100% - (var(--margine) * 2), var(--larghezza));
+  margin-inline: auto;
+}
+
+.sezione { padding-block: var(--sezione); }
+
+.sezione-alta { background: var(--carta-2); }
+
+.salta { position: absolute; left: -9999px; }
+.salta:focus {
+  left: var(--sp-s);
+  top: var(--sp-s);
+  z-index: 100;
+  padding: 0.75rem 1rem;
+  background: var(--inchiostro);
+  color: var(--carta-viva);
+}
+
+
+/* =========================================================================
+   5. FASCIA INFORMATIVA E TESTATA
+   ========================================================================= */
+
+/* Striscia scura in cima: dice subito dove siamo, che e' la cosa che
+   cerca chi arriva da Google Maps. */
+.fascia {
+  background: var(--inchiostro);
+  color: rgba(242, 241, 236, 0.82);
+  font-size: var(--t-micro);
+  letter-spacing: 0.06em;
+  text-align: center;
+  padding-block: 0.625rem;
+}
+
+.fascia a { text-decoration: none; }
+.fascia a:hover { color: var(--carta-viva); }
+
+/* la parte lunga della fascia sparisce sul telefono */
+.fascia .estesa { display: none; }
+
+@media (min-width: 48em) {
+  .fascia .estesa { display: inline; }
+}
+
+.testata { border-bottom: 1px solid var(--riga); }
+
+.testata .wrap {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--sp-s);
+  padding-block: 1.125rem;
+}
+
+.marchio {
+  font-family: var(--serif);
+  font-size: 1.375rem;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.nav {
+  display: flex;
+  align-items: baseline;
+  gap: 1.125rem;
+  font-size: var(--t-micro);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.nav a {
+  text-decoration: none;
+  color: var(--ink-70);
+}
+.nav a:hover { color: var(--inchiostro); }
+
+.nav-tel { display: none; }
+
+@media (min-width: 48em) {
+  .marchio { font-size: 1.625rem; }
+  .nav { gap: var(--sp-m); }
+  .nav-tel {
+    display: inline;
+    color: var(--inchiostro);
+    white-space: nowrap;
+  }
+  .nav-tel:hover { color: var(--rosso); }
+}
+
+
+/* =========================================================================
+   6. PULSANTI E BARRA CONTATTI
+   ========================================================================= */
+
+.bottoni {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3.5rem;
+  padding: 0.75rem 1.75rem;
+  border: 1px solid transparent;
+  border-radius: var(--raggio);
+  font-family: var(--sans);
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  text-align: center;
+}
+
+.bottoni > .btn { flex: 1 1 13rem; }
+
+.btn-rosso {
+  background: var(--rosso);
+  color: var(--carta-viva);
+}
+.btn-rosso:hover { background: #971d16; }
+
+.btn-linea {
+  border-color: var(--riga-scura);
+  color: var(--inchiostro);
+}
+.btn-linea:hover { border-color: var(--inchiostro); }
+
+/* sui fondi scuri i pulsanti in linea si schiariscono */
+.su-scuro .btn-linea {
+  border-color: rgba(242, 241, 236, 0.42);
+  color: var(--carta-viva);
+}
+.su-scuro .btn-linea:hover { border-color: var(--carta-viva); }
+
+/* --- barra fissa in fondo, solo telefono ------------------------------- */
+
+.barra-contatti {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 60;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+.barra-contatti a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--barra);
+  font-size: 1.0625rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+}
+
+.barra-contatti .b-chiama {
+  background: var(--rosso);
+  color: var(--carta-viva);
+}
+
+.barra-contatti .b-wa {
+  background: var(--inchiostro);
+  color: var(--carta-viva);
+}
+
+@media (min-width: 48em) {
+  body { padding-bottom: 0; }
+  .barra-contatti { display: none; }
+}
+
+
+/* =========================================================================
+   7. APERTURA
+   ========================================================================= */
+
+.hero-foto img {
+  width: 100%;
+  aspect-ratio: 4 / 3;   /* le foto originali sono 4:3, così non si ingrandiscono */
+  object-fit: cover;
+}
+
+.hero-testo { padding-block: var(--sp-xl) var(--sezione); }
+
+.hero-testo h1 { margin-bottom: var(--sp-m); }
+
+.hero-testo .lead {
+  max-width: 32rem;
+  margin-bottom: var(--sp-l);
+}
+
+.hero-testo .bottoni { max-width: 32rem; }
+
+@media (min-width: 48em) {
+  .hero-foto img { aspect-ratio: 16 / 7; }
+
+  /* da desktop il titolo sta a sinistra e i contatti a destra,
+     appoggiati alla stessa righina */
+  .hero-testo {
+    display: grid;
+    grid-template-columns: 1.35fr 1fr;
+    gap: var(--sp-xl);
+    align-items: end;
+    padding-block: var(--sp-xl) var(--sezione);
+  }
+  .hero-testo .lead { margin-bottom: 0; }
+}
+
+
+/* =========================================================================
+   8. COSA FACCIAMO
+   ========================================================================= */
+
+.lavori {
+  margin-top: var(--sp-xl);
+  border-top: 1px solid var(--riga);
+}
+
+.lavoro {
+  display: grid;
+  grid-template-columns: 2.5rem 1fr;
+  gap: 0 var(--sp-s);
+  padding-block: var(--sp-m);
+  border-bottom: 1px solid var(--riga);
+}
+
+/* il numeretto in graziato a sinistra: e' quello che fa sembrare
+   un indice e non una griglia di riquadri */
+.lavoro .num {
+  font-family: var(--serif);
+  font-size: var(--t-piccolo);
+  color: var(--ink-50);
+  line-height: 1.7;
+}
+
+.lavoro h3 { margin-bottom: 0.25rem; }
+
+.lavoro p {
+  max-width: 34rem;
+  color: var(--ink-70);
+  font-size: var(--t-piccolo);
+}
+
+@media (min-width: 56em) {
+  .lavoro {
+    grid-template-columns: 3rem 16rem 1fr;
+    align-items: baseline;
+    gap: 0 var(--sp-l);
+    padding-block: var(--sp-l);
+  }
+  .lavoro h3 { margin-bottom: 0; }
+}
+
+.marchi {
+  margin-top: var(--sp-l);
+  max-width: 44rem;
+  font-size: var(--t-piccolo);
+  color: var(--ink-70);
+}
+.marchi strong { color: var(--inchiostro); font-weight: 600; }
+
+
+/* =========================================================================
+   9. RESTAURO E FOTO
+   ========================================================================= */
+
+/* foto a tutta pagina, fuori dal contenitore */
+.foto-piena img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+@media (min-width: 48em) {
+  .foto-piena img { aspect-ratio: 2 / 1; }
+}
+
+.didascalia {
+  margin-top: 0.75rem;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: var(--t-piccolo);
+  color: var(--ink-50);
+}
+
+/* coppia di foto, la seconda scende un po' da desktop:
+   e' la sfasatura che toglie l'aria da griglia automatica */
+.coppia {
+  display: grid;
+  gap: var(--sp-m);
+  margin-top: var(--sp-l);
+}
+
+.coppia figure { margin: 0; }
+
+.coppia img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+@media (min-width: 48em) {
+  .coppia {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--sp-l);
+    align-items: start;
+  }
+  .coppia > *:nth-child(even) { margin-top: var(--sp-xl); }
+}
+
+.link-avanti {
+  display: inline-block;
+  margin-top: var(--sp-l);
+  padding-bottom: 0.375rem;
+  border-bottom: 1px solid var(--rosso);
+  font-family: var(--serif);
+  font-size: var(--t-lead);
+  letter-spacing: -0.01em;
+  text-decoration: none;
+}
+.link-avanti:hover { color: var(--rosso); }
+.link-avanti .freccia { color: var(--rosso); }
+
+
+/* =========================================================================
+   10. DAL 1983
+   ========================================================================= */
+
+.storia { display: grid; gap: var(--sp-l); }
+
+.storia img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+@media (min-width: 48em) {
+  .storia {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--sp-xl);
+    align-items: center;
+  }
+  .storia .storia-foto { order: -1; }   /* la foto va a sinistra */
+}
+
+
+/* =========================================================================
+   11. DOVE SIAMO
+   ========================================================================= */
+
+.dove { display: grid; gap: var(--sp-l); }
+
+.dove h3 {
+  margin-bottom: var(--sp-xs);
+  font-family: var(--sans);
+  font-size: var(--t-micro);
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-50);
+}
+
+.indirizzo {
+  font-family: var(--serif);
+  font-size: var(--t-lead);
+  line-height: 1.3;
+  font-style: normal;
+  letter-spacing: -0.01em;
+}
+
+.link-mappa {
+  display: inline-block;
+  margin-top: var(--sp-s);
+  font-size: var(--t-piccolo);
+  color: var(--rosso);
+  text-underline-offset: 3px;
+}
+
+@media (min-width: 48em) {
+  .dove { grid-template-columns: 1fr 1fr; gap: var(--sp-xl); }
+}
+
+
+/* =========================================================================
+   12. CONTATTI (blocco scuro)
+   ========================================================================= */
+
+.contatti {
+  background: var(--inchiostro);
+  color: var(--carta-viva);
+}
+
+.contatti .etichetta {
+  border-color: rgba(242, 241, 236, 0.34);
+  color: rgba(242, 241, 236, 0.55);
+}
+
+.contatti .lead {
+  max-width: 32rem;
+  margin-bottom: var(--sp-l);
+  color: rgba(242, 241, 236, 0.72);
+}
+
+.contatti .bottoni { max-width: 32rem; }
+
+/* la riga di sottotesto sotto i pulsanti */
+.sottotesto {
+  max-width: 32rem;
+  margin-top: var(--sp-m);
+  font-size: var(--t-piccolo);
+  color: rgba(242, 241, 236, 0.62);
+}
+
+.altri-contatti {
+  margin-top: var(--sp-xl);
+  padding-top: var(--sp-m);
+  border-top: 1px solid rgba(242, 241, 236, 0.2);
+  font-size: var(--t-piccolo);
+  color: rgba(242, 241, 236, 0.62);
+}
+.altri-contatti a { color: var(--carta-viva); text-underline-offset: 3px; }
+
+
+/* =========================================================================
+   13. PIEDE PAGINA
+   ========================================================================= */
+
+.piede {
+  background: var(--inchiostro);
+  color: rgba(242, 241, 236, 0.5);
+  padding-block: var(--sp-l);
+  border-top: 1px solid rgba(242, 241, 236, 0.14);
+  font-size: var(--t-micro);
+  letter-spacing: 0.04em;
+}
+
+.piede .wrap { display: grid; gap: var(--sp-xs); }
+.piede a { color: rgba(242, 241, 236, 0.72); }
+
+
+/* =========================================================================
+   14. PAGINA RESTAURO
+   ========================================================================= */
+
+.torna {
+  display: inline-block;
+  margin-bottom: var(--sp-l);
+  font-size: var(--t-micro);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-50);
+  text-decoration: none;
+}
+.torna:hover { color: var(--inchiostro); }
+
+.restauro-testata { padding-block: var(--sp-xl) var(--sp-xl); }
+.restauro-testata h1 { margin-bottom: var(--sp-m); }
+.restauro-testata .lead { max-width: 34rem; }
+
+.capitolo { padding-block: var(--sezione) 0; }
+.capitolo h2 { margin-bottom: var(--sp-m); }
+.capitolo .prosa { color: var(--ink-70); }
+
+/* prima e dopo */
+.confronto {
+  display: grid;
+  gap: var(--sp-m);
+  margin-top: var(--sp-l);
+}
+
+.confronto figure { margin: 0; }
+
+.confronto img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.confronto figcaption {
+  margin-top: 0.75rem;
+  font-size: var(--t-micro);
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-50);
+}
+
+@media (min-width: 40em) {
+  .confronto { grid-template-columns: 1fr 1fr; gap: var(--sp-l); }
+}
+
+/* --- scheda tecnica ---------------------------------------------------- */
+
+.scheda {
+  width: 100%;
+  max-width: 42rem;
+  margin-top: var(--sp-l);
+  border-collapse: collapse;
+  font-size: var(--t-piccolo);
+}
+
+.scheda th,
+.scheda td {
+  padding: 0.9375rem 0;
+  text-align: left;
+  vertical-align: top;
+  border-bottom: 1px solid var(--riga);
+}
+
+.scheda th {
+  width: 45%;
+  padding-right: var(--sp-s);
+  font-weight: 400;
+  color: var(--ink-50);
+}
+
+.scheda td {
+  font-family: var(--serif);
+  font-size: 1.0625rem;
+  font-variant-numeric: tabular-nums;
+}
+
+
+/* =========================================================================
+   15. SEGNAPOSTO E UTILITA
+   ========================================================================= */
+
+/* Roba da compilare prima di pubblicare. Quando i dati ci sono,
+   si cancella l'elemento e basta. */
+.segnaposto {
+  max-width: 32rem;
+  padding: var(--sp-s) var(--sp-m);
+  border-left: 3px solid var(--giallo);
+  background: rgba(138, 106, 18, 0.09);
+  font-size: var(--t-piccolo);
+  color: var(--ink-70);
+}
+.segnaposto strong {
+  display: block;
+  color: var(--giallo);
+  font-weight: 600;
+}
+
+.solo-lettori {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+
+/* =========================================================================
+   16. RITOCCHI E CLASSI DI SERVIZIO
+   ========================================================================= */
+
+/* un testo che segue subito un titolo */
+.dopo-titolo { margin-top: var(--sp-m); }
+
+/* Nel blocco "cosa facciamo" il numeretto, il titolo e la descrizione
+   vanno messi a mano nella griglia, altrimenti la descrizione finisce
+   sotto al numero. */
+.lavoro .num { grid-column: 1; grid-row: 1; }
+.lavoro h3   { grid-column: 2; grid-row: 1; }
+.lavoro p    { grid-column: 2; grid-row: 2; }
+
+@media (min-width: 56em) {
+  .lavoro p { grid-column: 3; grid-row: 1; }
+}
+
+/* apertura: l'etichetta sta stretta sotto la foto */
+.hero-testo .etichetta { margin-bottom: var(--sp-m); }
+
+/* sezione restauro: testo, poi foto a tutta pagina, poi le altre foto */
+.restauro-intro { margin-bottom: var(--sp-xl); }
+.restauro-coda  { margin-top: var(--sp-m); }
+
+/* sul telefono la testata sta su una riga sola */
+@media (max-width: 47.9375em) {
+  .marchio { font-size: 1.1875rem; }
+  .nav { gap: 0.875rem; letter-spacing: 0.08em; }
+  .nav-officina { display: none; }
+}
+
+/* nella pagina restauro le foto a tutta pagina vanno staccate dal testo */
+.capitolo .foto-piena { margin-top: var(--sp-l); }

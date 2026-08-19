@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="it">
+<!--
+     ====================================================================
+     PAGINA DI UN RESTAURO
+
+     Per aggiungerne un'altra (Benelli 125 Sport, Yamaha RD 350, Vespa 50,
+     Corsarino 50) si duplica questo file dentro la cartella restauri/,
+     gli si dà un nome tipo benelli-125-sport.html, e si cambia solo:
+
+       1. title, meta description e canonical qui sotto nella testa
+       2. il nome della moto nel titolo h1 e nell'etichetta
+       3. i testi dei capitoli
+       4. i nomi dei file delle foto e i loro alt
+       5. le righe della scheda tecnica in fondo
+       6. il JSON-LD in fondo (nome e indirizzo della pagina)
+
+     Struttura e stile non si toccano: sta tutto in ../style.css.
+     Poi si aggiunge il link alla nuova pagina dentro index.html,
+     nella sezione "Restauro moto d'epoca".
+     ====================================================================
+-->
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Restauro Ducati 250 Mach 1 | Motopassione Roma</title>
+<meta name="description" content="Il restauro completo di una Ducati 250 Mach 1: motore rifatto con i ricambi originali, tutti i cuscinetti sostituiti, verniciatura rosso rame. Restauro moto d'epoca a Roma, al Pigneto.">
+
+<link rel="canonical" href="https://motopassione.eu/restauri/ducati-250-match1.html">
+<meta name="theme-color" content="#14171c">
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="it_IT">
+<meta property="og:site_name" content="Motopassione">
+<meta property="og:title" content="Restauro Ducati 250 Mach 1">
+<meta property="og:description" content="Motore rifatto con i ricambi originali, tutti i cuscinetti sostituiti, verniciatura rosso rame. Restauro moto d'epoca a Roma.">
+<meta property="og:url" content="https://motopassione.eu/restauri/ducati-250-match1.html">
+<meta property="og:image" content="https://motopassione.eu/img/ducati-250-mach1-completa.webp">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+
+<a class="salta" href="#contenuto">Vai al contenuto</a>
+
+<div class="fascia">
+  <span class="estesa">Officina autorizzata Gruppo Piaggio e Honda &nbsp;&middot;&nbsp; </span>Via del Pigneto 5G, Roma &nbsp;&middot;&nbsp; <a href="tel:+390678346233">06 78346233</a>
+</div>
+
+<header class="testata">
+  <div class="wrap">
+    <a class="marchio" href="../index.html">Motopassione</a>
+    <nav class="nav" aria-label="Navigazione principale">
+      <a class="nav-officina" href="../index.html#officina">Officina</a>
+      <a href="../index.html#restauro">Restauri</a>
+      <a href="../index.html#dove">Dove siamo</a>
+      <a class="nav-tel" href="tel:+390678346233">06 78346233</a>
+    </nav>
+  </div>
+</header>
+
+<main id="contenuto">
+
+  <!-- =================================================================
+       APERTURA
+       ================================================================= -->
+  <div class="wrap restauro-testata">
+    <a class="torna" href="../index.html#restauro">&larr; Tutti i restauri</a>
+    <p class="etichetta">Restauro completo</p>
+    <h1>Ducati 250 Mach 1</h1>
+    <p class="lead dopo-titolo">Arrivata ferma da anni, con il motore da aprire e la vernice andata via a pezzi. È tornata in strada come stava di serie, con i suoi ricambi dove c'erano ancora.</p>
+  </div>
+
+  <!-- POSTO PER LA FOTO DI APERTURA DELLA DUCATI.
+       Quando arriva lo scatto della moto finita, salvarlo come
+       img/ducati-250-mach1-completa.webp e togliere i commenti qui sotto.
+
+  <figure class="foto-piena">
+    <img src="../img/ducati-250-mach1-completa.webp"
+         width="1600" height="1067"
+         alt="Ducati 250 Mach 1 restaurata, verniciata rosso rame, vista di tre quarti"
+         fetchpriority="high" decoding="async">
+  </figure>
+  -->
+
+
+  <!-- POSTO PER IL PRIMA E DOPO DELLA DUCATI.
+       Servono due foto, img/ducati-250-mach1-prima-1.webp e
+       img/ducati-250-mach1-lato.webp. Poi si tolgono i commenti.
+
+  <!-- =================================================================
+       PRIMA E DOPO
+       ================================================================= - ->
+  <section class="sezione">
+    <div class="wrap">
+
+      <p class="etichetta">Prima e dopo</p>
+
+      <div class="confronto">
+        <figure>
+          <img src="../img/ducati-250-mach1-prima-1.webp"
+               width="1200" height="900"
+               alt="La Ducati 250 Mach 1 come è arrivata in officina, sporca e senza vernice"
+               loading="lazy" decoding="async">
+          <figcaption>Come è arrivata</figcaption>
+        </figure>
+        <figure>
+          <img src="../img/ducati-250-mach1-lato.webp"
+               width="1200" height="900"
+               alt="La Ducati 250 Mach 1 restaurata, vista di lato"
+               loading="lazy" decoding="async">
+          <figcaption>Come è tornata</figcaption>
+        </figure>
+      </div>
+
+    </div>
+  </section>
+
+
+  -->
+
+
+  <!-- =================================================================
+       CAPITOLI DEL RACCONTO
+       Ogni capitolo è un titolo, due paragrafi e le foto.
+       Se ne aggiungono e si tolgono liberamente.
+       ================================================================= -->
+
+  <section class="capitolo">
+    <div class="wrap">
+      <h2>Com'era arrivata</h2>
+      <div class="prosa misura-l dopo-titolo">
+        <p>Una Mach 1 che aveva passato troppi anni sotto un telo. Il motore girava a fatica, l'impianto elettrico era da rifare da capo, la vernice se ne era andata a pezzi e la ruggine aveva cominciato il suo lavoro.</p>
+        <p>La base però era sana, e su una moto così è quello che conta davvero: se il telaio e i carter sono buoni, tutto il resto si recupera. Si è smontata pezzo per pezzo, e ogni pezzo è stato messo da parte e guardato uno alla volta.</p>
+      </div>
+
+      <!-- Qui vanno due foto dello smontaggio, quando ci sono:
+           img/ducati-250-mach1-prima-2.webp e
+           img/ducati-250-mach1-motore-smontato.webp -->
+    </div>
+  </section>
+
+
+  <section class="capitolo">
+    <div class="wrap">
+      <h2>Il motore</h2>
+      <div class="prosa misura-l dopo-titolo">
+        <p>Il monocilindrico è stato aperto tutto e rifatto pezzo per pezzo, <strong>tenendo i ricambi originali</strong> dovunque fossero ancora in tolleranza. Rimettere tutto nuovo è più veloce, ma a una moto di questa età toglie quello che è.</p>
+        <p>I cuscinetti invece sono stati <strong>sostituiti tutti</strong>, senza eccezioni. Dopo anni di fermo sono la prima cosa che cede, e non ha senso rimontare un motore intorno a un cuscinetto stanco per poi riaprirlo dopo mille chilometri.</p>
+      </div>
+    </div>
+
+    <!-- Qui va la foto del motore rimontato:
+         img/ducati-250-mach1-motore.webp -->
+  </section>
+
+
+  <section class="capitolo">
+    <div class="wrap">
+      <h2>Il colore</h2>
+      <div class="prosa misura-l dopo-titolo">
+        <p>La verniciatura è <strong>rosso rame</strong>. Serbatoio e parafanghi sono stati portati al metallo e rifatti da zero, non ripassati sopra alla vecchia mano di vernice, perché altrimenti dopo un anno si vede.</p>
+        <p>Cromature, fanale e strumentazione sono stati rimessi a posto insieme al resto. Il risultato deve sembrare una moto tenuta bene, non una moto rifatta ieri.</p>
+      </div>
+
+      <!-- Qui vanno le foto del serbatoio e del fanale:
+           img/ducati-250-mach1-serbatoio.webp e
+           img/ducati-250-mach1-dettaglio.webp -->
+    </div>
+  </section>
+
+
+  <section class="capitolo">
+    <div class="wrap">
+      <h2>Com'è finita</h2>
+      <div class="prosa misura-l dopo-titolo">
+        <p>Rimessa in strada, non da museo. Si accende a pedale, cammina, e fa il rumore che deve fare una Ducati di quegli anni. Il resto lo lasciamo dire alle foto.</p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- =================================================================
+       ALTRI RESTAURI
+       Foto vere di altri lavori usciti dall'officina. Quando le pagine
+       degli altri restauri esistono, basta linkare le foto.
+       ================================================================= -->
+  <section class="sezione sezione-alta">
+    <div class="wrap">
+
+      <p class="etichetta">Altri restauri</p>
+      <h2>Altre moto<br>uscite da qui</h2>
+
+      <div class="coppia">
+        <figure>
+          <img src="../img/vespa-restaurata.webp"
+               width="480" height="360"
+               alt="Vespa d'epoca restaurata, verniciata verde chiaro"
+               loading="lazy" decoding="async">
+          <figcaption class="didascalia">Vespa, restauro completo.</figcaption>
+        </figure>
+        <figure>
+          <img src="../img/yamaha-rd-350.webp"
+               width="480" height="360"
+               alt="Yamaha RD 350 con la livrea rossa e bianca, parcheggiata davanti all'officina"
+               loading="lazy" decoding="async">
+          <figcaption class="didascalia">Yamaha RD 350.</figcaption>
+        </figure>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- =================================================================
+       SCHEDA TECNICA
+       Va in fondo apposta: prima si guardano le foto e si legge il lavoro.
+       ================================================================= -->
+  <section class="sezione">
+    <div class="wrap">
+
+      <p class="etichetta">Scheda tecnica</p>
+      <h2>Ducati 250 Mach 1</h2>
+
+      <table class="scheda">
+        <tbody>
+          <tr><th scope="row">Motore</th>                  <td>Monocilindrico verticale 4 tempi</td></tr>
+          <tr><th scope="row">Cilindrata</th>              <td>248,5 cc</td></tr>
+          <tr><th scope="row">Alesaggio per corsa</th>     <td>74 x 57,8 mm</td></tr>
+          <tr><th scope="row">Rapporto di compressione</th><td>10:1</td></tr>
+          <tr><th scope="row">Alimentazione</th>           <td>Carburatore Dell'Orto SS 29</td></tr>
+          <tr><th scope="row">Raffreddamento</th>          <td>Ad aria</td></tr>
+          <tr><th scope="row">Avviamento</th>              <td>A pedale</td></tr>
+          <tr><th scope="row">Potenza</th>                 <td>24 CV a 8500 giri</td></tr>
+          <tr><th scope="row">Cambio</th>                  <td>5 marce</td></tr>
+          <tr><th scope="row">Frizione</th>                <td>Multidisco</td></tr>
+          <tr><th scope="row">Trasmissione finale</th>     <td>A catena</td></tr>
+          <tr><th scope="row">Peso a vuoto</th>            <td>116 kg</td></tr>
+          <tr><th scope="row">Velocità massima</th>        <td>170 km/h</td></tr>
+        </tbody>
+      </table>
+
+    </div>
+  </section>
+
+
+  <!-- =================================================================
+       CONTATTI
+       ================================================================= -->
+  <section class="sezione contatti su-scuro">
+    <div class="wrap">
+
+      <p class="etichetta">Contatti</p>
+      <h2>Hai una moto ferma in garage?</h2>
+      <p class="lead dopo-titolo">Mandaci due foto e ti diciamo se si recupera e cosa comporta.</p>
+
+      <div class="bottoni">
+        <a class="btn btn-rosso" href="tel:+390678346233">Chiama 06 78346233</a>
+        <a class="btn btn-linea" href="https://wa.me/393802871500?text=Ciao%2C%20vi%20scrivo%20per%20un%20restauro." target="_blank" rel="noopener">Scrivi su WhatsApp</a>
+      </div>
+
+      <p class="sottotesto">I restauri si fanno su appuntamento. Passa in officina con la moto oppure scrivici prima su WhatsApp, così ci organizziamo.</p>
+
+      <p class="altri-contatti">
+        Email <a href="mailto:info@motopassione.eu">info@motopassione.eu</a>
+        &nbsp;&middot;&nbsp;
+        Via del Pigneto 5G, 00176 Roma
+      </p>
+
+    </div>
+  </section>
+
+</main>
+
+
+<footer class="piede">
+  <div class="wrap">
+    <p>Motopassione di Vilmercati Enrico &nbsp;&middot;&nbsp; Via del Pigneto 5G, 00176 Roma &nbsp;&middot;&nbsp; <a href="tel:+390678346233">06 78346233</a></p>
+    <!-- SEGNAPOSTO: inserire la partita IVA reale -->
+    <p>Partita IVA <strong>DA INSERIRE</strong></p>
+  </div>
+</footer>
+
+
+<div class="barra-contatti">
+  <a class="b-chiama" href="tel:+390678346233">Chiama</a>
+  <a class="b-wa" href="https://wa.me/393802871500?text=Ciao%2C%20vi%20scrivo%20per%20un%20restauro." target="_blank" rel="noopener">WhatsApp</a>
+</div>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Motopassione", "item": "https://motopassione.eu/" },
+    { "@type": "ListItem", "position": 2, "name": "Restauri", "item": "https://motopassione.eu/#restauro" },
+    { "@type": "ListItem", "position": 3, "name": "Ducati 250 Mach 1" }
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Restauro Ducati 250 Mach 1",
+  "description": "Il restauro completo di una Ducati 250 Mach 1: motore rifatto con i ricambi originali, tutti i cuscinetti sostituiti, verniciatura rosso rame.",
+  "image": "https://motopassione.eu/img/ducati-250-mach1-completa.webp",
+  "mainEntityOfPage": "https://motopassione.eu/restauri/ducati-250-match1.html",
+  "author": {
+    "@type": "Organization",
+    "name": "Motopassione",
+    "@id": "https://motopassione.eu/#officina"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Motopassione",
+    "@id": "https://motopassione.eu/#officina"
+  }
+}
+</script>
+
+</body>
+</html>
