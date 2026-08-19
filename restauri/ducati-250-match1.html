@@ -15,9 +15,9 @@
        5. le righe della scheda tecnica in fondo
        6. il JSON-LD in fondo (nome e indirizzo della pagina)
 
-     Struttura e stile non si toccano: sta tutto in ../style.css.
-     Poi si aggiunge il link alla nuova pagina dentro index.html,
-     nella sezione "Restauro moto d'epoca".
+     Struttura e grafica non si toccano: sta tutto in ../style.css.
+     Poi si aggiunge il link alla pagina nuova dentro index.html,
+     nella sezione "Restauri".
      ====================================================================
 -->
 <head>
@@ -28,7 +28,9 @@
 <meta name="description" content="Il restauro completo di una Ducati 250 Mach 1: motore rifatto con i ricambi originali, tutti i cuscinetti sostituiti, verniciatura rosso rame. Restauro moto d'epoca a Roma, al Pigneto.">
 
 <link rel="canonical" href="https://motopassione.eu/restauri/ducati-250-match1.html">
-<meta name="theme-color" content="#14171c">
+<meta name="theme-color" content="#ffffff">
+
+<link rel="preload" href="../fonts/InterVariable.woff2" as="font" type="font/woff2" crossorigin>
 
 <meta property="og:type" content="article">
 <meta property="og:locale" content="it_IT">
@@ -36,7 +38,7 @@
 <meta property="og:title" content="Restauro Ducati 250 Mach 1">
 <meta property="og:description" content="Motore rifatto con i ricambi originali, tutti i cuscinetti sostituiti, verniciatura rosso rame. Restauro moto d'epoca a Roma.">
 <meta property="og:url" content="https://motopassione.eu/restauri/ducati-250-match1.html">
-<meta property="og:image" content="https://motopassione.eu/img/ducati-250-mach1-completa.webp">
+<meta property="og:image" content="https://motopassione.eu/img/vespa-restaurata.webp">
 <meta name="twitter:card" content="summary_large_image">
 
 <link rel="stylesheet" href="../style.css">
@@ -46,19 +48,79 @@
 
 <a class="salta" href="#contenuto">Vai al contenuto</a>
 
-<div class="fascia">
-  <span class="estesa">Officina autorizzata Gruppo Piaggio e Honda &nbsp;&middot;&nbsp; </span>Via del Pigneto 5G, Roma &nbsp;&middot;&nbsp; <a href="tel:+390678346233">06 78346233</a>
-</div>
+<!-- ===================================================================
+     ICONE
+     Disegnate qui una volta sola e richiamate nel resto della pagina con
+     <svg class="icona"><use href="#nome"></use></svg>.
+     Prendono il colore del testo che hanno intorno.
+     =================================================================== -->
+<svg width="0" height="0" aria-hidden="true" focusable="false" style="position:absolute">
+  <symbol id="i-telefono" viewBox="0 0 24 24">
+    <path d="M15.6 21A12.6 12.6 0 0 1 3 8.4V6.9a2 2 0 0 1 2-2h2.4a1.4 1.4 0 0 1 1.36 1.06l.72 2.9a1.4 1.4 0 0 1-.6 1.5l-1.28.86a12.6 12.6 0 0 0 5 5l.86-1.28a1.4 1.4 0 0 1 1.5-.6l2.9.72A1.4 1.4 0 0 1 19 16.6V19a2 2 0 0 1-2 2z"/>
+  </symbol>
+  <symbol id="i-whatsapp" viewBox="0 0 24 24">
+    <path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.08-.3-.15-1.26-.47-2.39-1.48-.88-.79-1.48-1.76-1.65-2.06-.18-.3-.02-.46.13-.6.13-.14.3-.35.44-.53.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.88 1.22 3.07.15.2 2.1 3.2 5.08 4.49.7.3 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2-1.42.25-.69.25-1.29.18-1.41-.08-.13-.27-.2-.57-.35M12.05 21.79h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.89 9.89-9.89a9.82 9.82 0 0 1 9.88 9.9c0 5.44-4.43 9.88-9.88 9.88m8.41-18.3A11.82 11.82 0 0 0 12.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.88 11.88 0 0 0 5.69 1.45c6.55 0 11.89-5.34 11.89-11.9a11.82 11.82 0 0 0-3.48-8.41"/>
+  </symbol>
+  <symbol id="i-facebook" viewBox="0 0 24 24">
+    <path d="M24 12.07C24 5.44 18.63.07 12 .07S0 5.44 0 12.07c0 5.99 4.39 10.95 10.13 11.85v-8.38H7.08v-3.47h3.05V9.43c0-3.01 1.79-4.67 4.53-4.67 1.31 0 2.69.24 2.69.24v2.95h-1.52c-1.49 0-1.95.93-1.95 1.88v2.25h3.33l-.54 3.47h-2.8v8.38C19.61 23.02 24 18.06 24 12.07"/>
+  </symbol>
+  <symbol id="i-posizione" viewBox="0 0 24 24">
+    <path d="M12 21.4s7-5.9 7-11.1a7 7 0 1 0-14 0c0 5.2 7 11.1 7 11.1z"/>
+    <circle cx="12" cy="10.2" r="2.6"/>
+  </symbol>
+  <symbol id="i-orologio" viewBox="0 0 24 24">
+    <circle cx="12" cy="12" r="8.6"/>
+    <path d="M12 6.9V12l3.4 2.1"/>
+  </symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24">
+    <rect x="3" y="5.2" width="18" height="13.6" rx="2.6"/>
+    <path d="m4.4 7.6 7.6 5.2 7.6-5.2"/>
+  </symbol>
+  <symbol id="i-freccia" viewBox="0 0 24 24">
+    <path d="M4.5 12h15M13.5 6l6 6-6 6"/>
+  </symbol>
+  <symbol id="i-chiave" viewBox="0 0 24 24">
+    <path d="M14.6 3.2a5.5 5.5 0 0 0-4.9 8l-6 6a2.1 2.1 0 1 0 3 3l6-6a5.5 5.5 0 0 0 8-4.9c0-.7-.14-1.37-.4-2l-3.4 3.4-2.7-2.7 3.4-3.4a5.5 5.5 0 0 0-2-.4z"/>
+  </symbol>
+  <symbol id="i-revisione" viewBox="0 0 24 24">
+    <path d="M9 4.6H7.2A2.2 2.2 0 0 0 5 6.8v12.4a2.2 2.2 0 0 0 2.2 2.2h9.6a2.2 2.2 0 0 0 2.2-2.2V6.8a2.2 2.2 0 0 0-2.2-2.2H15"/>
+    <rect x="9" y="2.6" width="6" height="4" rx="1.3"/>
+    <path d="m9.4 13.6 1.9 1.9 3.5-4"/>
+  </symbol>
+  <symbol id="i-diagnosi" viewBox="0 0 24 24">
+    <rect x="7.6" y="7.6" width="8.8" height="8.8" rx="2"/>
+    <path d="M10 4v3.6M14 4v3.6M10 16.4V20M14 16.4V20M4 10h3.6M4 14h3.6M16.4 10H20M16.4 14H20"/>
+  </symbol>
+  <symbol id="i-gomme" viewBox="0 0 24 24">
+    <circle cx="12" cy="12" r="8.6"/>
+    <circle cx="12" cy="12" r="3.4"/>
+    <path d="M12 3.4v3.2M12 17.4v3.2M3.4 12h3.2M17.4 12h3.2"/>
+  </symbol>
+  <symbol id="i-documento" viewBox="0 0 24 24">
+    <path d="M13.2 2.8H7.4a2.2 2.2 0 0 0-2.2 2.2v14a2.2 2.2 0 0 0 2.2 2.2h9.2a2.2 2.2 0 0 0 2.2-2.2V8.4z"/>
+    <path d="M13.2 2.8v5.6h5.6"/>
+    <path d="M8.8 13.6h6.4M8.8 16.8h4.2"/>
+  </symbol>
+</svg>
 
 <header class="testata">
   <div class="wrap">
     <a class="marchio" href="../index.html">Motopassione</a>
+
     <nav class="nav" aria-label="Navigazione principale">
       <a class="nav-officina" href="../index.html#officina">Officina</a>
-      <a href="../index.html#restauro">Restauri</a>
+      <a href="../index.html#restauri">Restauri</a>
       <a href="../index.html#dove">Dove siamo</a>
-      <a class="nav-tel" href="tel:+390678346233">06 78346233</a>
     </nav>
+
+    <div class="azioni-testata">
+      <a class="btn btn-rosso btn-piccolo" href="tel:+390678346233">
+        <svg class="icona"><use href="#i-telefono"></use></svg>Chiama
+      </a>
+      <a class="btn-icona" href="https://wa.me/393802871500?text=Ciao%2C%20vi%20scrivo%20per%20un%20restauro." target="_blank" rel="noopener" aria-label="Scrivici su WhatsApp">
+        <svg class="icona icona-piena"><use href="#i-whatsapp"></use></svg>
+      </a>
+    </div>
   </div>
 </header>
 
@@ -68,7 +130,9 @@
        APERTURA
        ================================================================= -->
   <div class="wrap restauro-testata">
-    <a class="torna" href="../index.html#restauro">&larr; Tutti i restauri</a>
+    <a class="torna" href="../index.html#restauri">
+      <svg class="icona"><use href="#i-freccia"></use></svg>Tutti i restauri
+    </a>
     <p class="etichetta">Restauro completo</p>
     <h1>Ducati 250 Mach 1</h1>
     <p class="lead dopo-titolo">Arrivata ferma da anni, con il motore da aprire e la vernice andata via a pezzi. È tornata in strada come stava di serie, con i suoi ricambi dove c'erano ancora.</p>
@@ -76,57 +140,46 @@
 
   <!-- POSTO PER LA FOTO DI APERTURA DELLA DUCATI.
        Quando arriva lo scatto della moto finita, salvarlo come
-       img/ducati-250-mach1-completa.webp e togliere i commenti qui sotto.
+       img/ducati-250-mach1-completa.webp e togliere questi commenti.
 
-  <figure class="foto-piena">
-    <img src="../img/ducati-250-mach1-completa.webp"
-         width="1600" height="1067"
-         alt="Ducati 250 Mach 1 restaurata, verniciata rosso rame, vista di tre quarti"
-         fetchpriority="high" decoding="async">
-  </figure>
+  <div class="wrap">
+    <figure class="foto-grande">
+      <img src="../img/ducati-250-mach1-completa.webp"
+           width="1600" height="1067"
+           alt="Ducati 250 Mach 1 restaurata, verniciata rosso rame, vista di tre quarti"
+           fetchpriority="high" decoding="async">
+    </figure>
+  </div>
   -->
 
+  <!-- POSTO PER IL PRIMA E DOPO.
+       Servono due foto: img/ducati-250-mach1-prima.webp e
+       img/ducati-250-mach1-dopo.webp
 
-  <!-- POSTO PER IL PRIMA E DOPO DELLA DUCATI.
-       Servono due foto, img/ducati-250-mach1-prima-1.webp e
-       img/ducati-250-mach1-lato.webp. Poi si tolgono i commenti.
-
-  <!-- =================================================================
-       PRIMA E DOPO
-       ================================================================= - ->
   <section class="sezione">
     <div class="wrap">
-
-      <p class="etichetta">Prima e dopo</p>
-
+      <h2>Prima e dopo</h2>
       <div class="confronto">
         <figure>
-          <img src="../img/ducati-250-mach1-prima-1.webp"
-               width="1200" height="900"
-               alt="La Ducati 250 Mach 1 come è arrivata in officina, sporca e senza vernice"
-               loading="lazy" decoding="async">
+          <img src="../img/ducati-250-mach1-prima.webp" width="1200" height="900"
+               alt="La Ducati 250 Mach 1 come è arrivata in officina" loading="lazy" decoding="async">
           <figcaption>Come è arrivata</figcaption>
         </figure>
         <figure>
-          <img src="../img/ducati-250-mach1-lato.webp"
-               width="1200" height="900"
-               alt="La Ducati 250 Mach 1 restaurata, vista di lato"
-               loading="lazy" decoding="async">
+          <img src="../img/ducati-250-mach1-dopo.webp" width="1200" height="900"
+               alt="La Ducati 250 Mach 1 restaurata, vista di lato" loading="lazy" decoding="async">
           <figcaption>Come è tornata</figcaption>
         </figure>
       </div>
-
     </div>
   </section>
-
-
   -->
 
 
   <!-- =================================================================
        CAPITOLI DEL RACCONTO
-       Ogni capitolo è un titolo, due paragrafi e le foto.
-       Se ne aggiungono e si tolgono liberamente.
+       Ogni capitolo è un titolo e due paragrafi. Se ne aggiungono e
+       si tolgono liberamente.
        ================================================================= -->
 
   <section class="capitolo">
@@ -136,13 +189,8 @@
         <p>Una Mach 1 che aveva passato troppi anni sotto un telo. Il motore girava a fatica, l'impianto elettrico era da rifare da capo, la vernice se ne era andata a pezzi e la ruggine aveva cominciato il suo lavoro.</p>
         <p>La base però era sana, e su una moto così è quello che conta davvero: se il telaio e i carter sono buoni, tutto il resto si recupera. Si è smontata pezzo per pezzo, e ogni pezzo è stato messo da parte e guardato uno alla volta.</p>
       </div>
-
-      <!-- Qui vanno due foto dello smontaggio, quando ci sono:
-           img/ducati-250-mach1-prima-2.webp e
-           img/ducati-250-mach1-motore-smontato.webp -->
     </div>
   </section>
-
 
   <section class="capitolo">
     <div class="wrap">
@@ -152,11 +200,7 @@
         <p>I cuscinetti invece sono stati <strong>sostituiti tutti</strong>, senza eccezioni. Dopo anni di fermo sono la prima cosa che cede, e non ha senso rimontare un motore intorno a un cuscinetto stanco per poi riaprirlo dopo mille chilometri.</p>
       </div>
     </div>
-
-    <!-- Qui va la foto del motore rimontato:
-         img/ducati-250-mach1-motore.webp -->
   </section>
-
 
   <section class="capitolo">
     <div class="wrap">
@@ -165,13 +209,8 @@
         <p>La verniciatura è <strong>rosso rame</strong>. Serbatoio e parafanghi sono stati portati al metallo e rifatti da zero, non ripassati sopra alla vecchia mano di vernice, perché altrimenti dopo un anno si vede.</p>
         <p>Cromature, fanale e strumentazione sono stati rimessi a posto insieme al resto. Il risultato deve sembrare una moto tenuta bene, non una moto rifatta ieri.</p>
       </div>
-
-      <!-- Qui vanno le foto del serbatoio e del fanale:
-           img/ducati-250-mach1-serbatoio.webp e
-           img/ducati-250-mach1-dettaglio.webp -->
     </div>
   </section>
-
 
   <section class="capitolo">
     <div class="wrap">
@@ -179,38 +218,6 @@
       <div class="prosa misura-l dopo-titolo">
         <p>Rimessa in strada, non da museo. Si accende a pedale, cammina, e fa il rumore che deve fare una Ducati di quegli anni. Il resto lo lasciamo dire alle foto.</p>
       </div>
-    </div>
-  </section>
-
-
-  <!-- =================================================================
-       ALTRI RESTAURI
-       Foto vere di altri lavori usciti dall'officina. Quando le pagine
-       degli altri restauri esistono, basta linkare le foto.
-       ================================================================= -->
-  <section class="sezione sezione-alta">
-    <div class="wrap">
-
-      <p class="etichetta">Altri restauri</p>
-      <h2>Altre moto<br>uscite da qui</h2>
-
-      <div class="coppia">
-        <figure>
-          <img src="../img/vespa-restaurata.webp"
-               width="480" height="360"
-               alt="Vespa d'epoca restaurata, verniciata verde chiaro"
-               loading="lazy" decoding="async">
-          <figcaption class="didascalia">Vespa, restauro completo.</figcaption>
-        </figure>
-        <figure>
-          <img src="../img/yamaha-rd-350.webp"
-               width="480" height="360"
-               alt="Yamaha RD 350 con la livrea rossa e bianca, parcheggiata davanti all'officina"
-               loading="lazy" decoding="async">
-          <figcaption class="didascalia">Yamaha RD 350.</figcaption>
-        </figure>
-      </div>
-
     </div>
   </section>
 
@@ -248,27 +255,63 @@
 
 
   <!-- =================================================================
+       ALTRI RESTAURI
+       Foto vere di altri lavori usciti dall'officina.
+       ================================================================= -->
+  <section class="sezione sezione-beige">
+    <div class="wrap">
+
+      <h2>Altre moto uscite da qui</h2>
+
+      <div class="coppia dopo-titolo">
+        <figure>
+          <img src="../img/vespa-restaurata.webp"
+               width="480" height="360"
+               alt="Vespa d'epoca restaurata, verniciata verde chiaro"
+               loading="lazy" decoding="async">
+          <figcaption class="didascalia">Vespa, restauro completo.</figcaption>
+        </figure>
+        <figure>
+          <img src="../img/yamaha-rd-350.webp"
+               width="480" height="360"
+               alt="Yamaha RD 350 con la livrea rossa e bianca, parcheggiata davanti all'officina"
+               loading="lazy" decoding="async">
+          <figcaption class="didascalia">Yamaha RD 350.</figcaption>
+        </figure>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- =================================================================
        CONTATTI
        ================================================================= -->
   <section class="sezione contatti su-scuro">
     <div class="wrap">
 
-      <p class="etichetta">Contatti</p>
       <h2>Hai una moto ferma in garage?</h2>
       <p class="lead dopo-titolo">Mandaci due foto e ti diciamo se si recupera e cosa comporta.</p>
 
       <div class="bottoni">
-        <a class="btn btn-rosso" href="tel:+390678346233">Chiama 06 78346233</a>
-        <a class="btn btn-linea" href="https://wa.me/393802871500?text=Ciao%2C%20vi%20scrivo%20per%20un%20restauro." target="_blank" rel="noopener">Scrivi su WhatsApp</a>
+        <a class="btn btn-rosso" href="tel:+390678346233">
+          <svg class="icona"><use href="#i-telefono"></use></svg>Chiama 06 78346233
+        </a>
+        <a class="btn btn-beige" href="https://wa.me/393802871500?text=Ciao%2C%20vi%20scrivo%20per%20un%20restauro." target="_blank" rel="noopener">
+          <svg class="icona icona-piena"><use href="#i-whatsapp"></use></svg>WhatsApp
+        </a>
       </div>
 
       <p class="sottotesto">I restauri si fanno su appuntamento. Passa in officina con la moto oppure scrivici prima su WhatsApp, così ci organizziamo.</p>
 
-      <p class="altri-contatti">
-        Email <a href="mailto:info@motopassione.eu">info@motopassione.eu</a>
-        &nbsp;&middot;&nbsp;
-        Via del Pigneto 5G, 00176 Roma
-      </p>
+      <div class="altri-contatti">
+        <a href="mailto:info@motopassione.eu">
+          <svg class="icona"><use href="#i-mail"></use></svg>info@motopassione.eu
+        </a>
+        <a href="https://www.google.com/maps/search/?api=1&amp;query=Motopassione%2C%20Via%20del%20Pigneto%205G%2C%2000176%20Roma" target="_blank" rel="noopener">
+          <svg class="icona"><use href="#i-posizione"></use></svg>Via del Pigneto 5G, Roma
+        </a>
+      </div>
 
     </div>
   </section>
@@ -286,8 +329,12 @@
 
 
 <div class="barra-contatti">
-  <a class="b-chiama" href="tel:+390678346233">Chiama</a>
-  <a class="b-wa" href="https://wa.me/393802871500?text=Ciao%2C%20vi%20scrivo%20per%20un%20restauro." target="_blank" rel="noopener">WhatsApp</a>
+  <a class="b-chiama" href="tel:+390678346233">
+    <svg class="icona"><use href="#i-telefono"></use></svg>Chiama
+  </a>
+  <a class="b-wa" href="https://wa.me/393802871500?text=Ciao%2C%20vi%20scrivo%20per%20un%20restauro." target="_blank" rel="noopener">
+    <svg class="icona icona-piena"><use href="#i-whatsapp"></use></svg>WhatsApp
+  </a>
 </div>
 
 
@@ -297,7 +344,7 @@
   "@type": "BreadcrumbList",
   "itemListElement": [
     { "@type": "ListItem", "position": 1, "name": "Motopassione", "item": "https://motopassione.eu/" },
-    { "@type": "ListItem", "position": 2, "name": "Restauri", "item": "https://motopassione.eu/#restauro" },
+    { "@type": "ListItem", "position": 2, "name": "Restauri", "item": "https://motopassione.eu/#restauri" },
     { "@type": "ListItem", "position": 3, "name": "Ducati 250 Mach 1" }
   ]
 }
@@ -309,18 +356,10 @@
   "@type": "Article",
   "headline": "Restauro Ducati 250 Mach 1",
   "description": "Il restauro completo di una Ducati 250 Mach 1: motore rifatto con i ricambi originali, tutti i cuscinetti sostituiti, verniciatura rosso rame.",
-  "image": "https://motopassione.eu/img/ducati-250-mach1-completa.webp",
+  "image": "https://motopassione.eu/img/vespa-restaurata.webp",
   "mainEntityOfPage": "https://motopassione.eu/restauri/ducati-250-match1.html",
-  "author": {
-    "@type": "Organization",
-    "name": "Motopassione",
-    "@id": "https://motopassione.eu/#officina"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Motopassione",
-    "@id": "https://motopassione.eu/#officina"
-  }
+  "author": { "@type": "Organization", "name": "Motopassione", "@id": "https://motopassione.eu/#officina" },
+  "publisher": { "@type": "Organization", "name": "Motopassione", "@id": "https://motopassione.eu/#officina" }
 }
 </script>
 

@@ -8,7 +8,9 @@
 <meta name="description" content="Officina moto al Pigneto dal 1983. Tagliandi, revisioni, diagnosi elettronica, gomme. Autorizzata Gruppo Piaggio e Honda. Restauro moto d'epoca a Roma.">
 
 <link rel="canonical" href="https://motopassione.eu/">
-<meta name="theme-color" content="#14171c">
+<meta name="theme-color" content="#ffffff">
+
+<link rel="preload" href="fonts/InterVariable.woff2" as="font" type="font/woff2" crossorigin>
 
 <meta property="og:type" content="website">
 <meta property="og:locale" content="it_IT">
@@ -27,21 +29,78 @@
 <a class="salta" href="#contenuto">Vai al contenuto</a>
 
 <!-- ===================================================================
-     FASCIA E TESTATA
+     ICONE
+     Disegnate qui una volta sola e richiamate nel resto della pagina con
+     <svg class="icona"><use href="#nome"></use></svg>.
+     Prendono il colore del testo che hanno intorno.
      =================================================================== -->
-<div class="fascia">
-  <span class="estesa">Officina autorizzata Gruppo Piaggio e Honda &nbsp;&middot;&nbsp; </span>Via del Pigneto 5G, Roma &nbsp;&middot;&nbsp; <a href="tel:+390678346233">06 78346233</a>
-</div>
+<svg width="0" height="0" aria-hidden="true" focusable="false" style="position:absolute">
+  <symbol id="i-telefono" viewBox="0 0 24 24">
+    <path d="M15.6 21A12.6 12.6 0 0 1 3 8.4V6.9a2 2 0 0 1 2-2h2.4a1.4 1.4 0 0 1 1.36 1.06l.72 2.9a1.4 1.4 0 0 1-.6 1.5l-1.28.86a12.6 12.6 0 0 0 5 5l.86-1.28a1.4 1.4 0 0 1 1.5-.6l2.9.72A1.4 1.4 0 0 1 19 16.6V19a2 2 0 0 1-2 2z"/>
+  </symbol>
+  <symbol id="i-whatsapp" viewBox="0 0 24 24">
+    <path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.08-.3-.15-1.26-.47-2.39-1.48-.88-.79-1.48-1.76-1.65-2.06-.18-.3-.02-.46.13-.6.13-.14.3-.35.44-.53.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.88 1.22 3.07.15.2 2.1 3.2 5.08 4.49.7.3 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2-1.42.25-.69.25-1.29.18-1.41-.08-.13-.27-.2-.57-.35M12.05 21.79h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.89 9.89-9.89a9.82 9.82 0 0 1 9.88 9.9c0 5.44-4.43 9.88-9.88 9.88m8.41-18.3A11.82 11.82 0 0 0 12.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.88 11.88 0 0 0 5.69 1.45c6.55 0 11.89-5.34 11.89-11.9a11.82 11.82 0 0 0-3.48-8.41"/>
+  </symbol>
+  <symbol id="i-facebook" viewBox="0 0 24 24">
+    <path d="M24 12.07C24 5.44 18.63.07 12 .07S0 5.44 0 12.07c0 5.99 4.39 10.95 10.13 11.85v-8.38H7.08v-3.47h3.05V9.43c0-3.01 1.79-4.67 4.53-4.67 1.31 0 2.69.24 2.69.24v2.95h-1.52c-1.49 0-1.95.93-1.95 1.88v2.25h3.33l-.54 3.47h-2.8v8.38C19.61 23.02 24 18.06 24 12.07"/>
+  </symbol>
+  <symbol id="i-posizione" viewBox="0 0 24 24">
+    <path d="M12 21.4s7-5.9 7-11.1a7 7 0 1 0-14 0c0 5.2 7 11.1 7 11.1z"/>
+    <circle cx="12" cy="10.2" r="2.6"/>
+  </symbol>
+  <symbol id="i-orologio" viewBox="0 0 24 24">
+    <circle cx="12" cy="12" r="8.6"/>
+    <path d="M12 6.9V12l3.4 2.1"/>
+  </symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24">
+    <rect x="3" y="5.2" width="18" height="13.6" rx="2.6"/>
+    <path d="m4.4 7.6 7.6 5.2 7.6-5.2"/>
+  </symbol>
+  <symbol id="i-freccia" viewBox="0 0 24 24">
+    <path d="M4.5 12h15M13.5 6l6 6-6 6"/>
+  </symbol>
+  <symbol id="i-chiave" viewBox="0 0 24 24">
+    <path d="M14.6 3.2a5.5 5.5 0 0 0-4.9 8l-6 6a2.1 2.1 0 1 0 3 3l6-6a5.5 5.5 0 0 0 8-4.9c0-.7-.14-1.37-.4-2l-3.4 3.4-2.7-2.7 3.4-3.4a5.5 5.5 0 0 0-2-.4z"/>
+  </symbol>
+  <symbol id="i-revisione" viewBox="0 0 24 24">
+    <path d="M9 4.6H7.2A2.2 2.2 0 0 0 5 6.8v12.4a2.2 2.2 0 0 0 2.2 2.2h9.6a2.2 2.2 0 0 0 2.2-2.2V6.8a2.2 2.2 0 0 0-2.2-2.2H15"/>
+    <rect x="9" y="2.6" width="6" height="4" rx="1.3"/>
+    <path d="m9.4 13.6 1.9 1.9 3.5-4"/>
+  </symbol>
+  <symbol id="i-diagnosi" viewBox="0 0 24 24">
+    <rect x="7.6" y="7.6" width="8.8" height="8.8" rx="2"/>
+    <path d="M10 4v3.6M14 4v3.6M10 16.4V20M14 16.4V20M4 10h3.6M4 14h3.6M16.4 10H20M16.4 14H20"/>
+  </symbol>
+  <symbol id="i-gomme" viewBox="0 0 24 24">
+    <circle cx="12" cy="12" r="8.6"/>
+    <circle cx="12" cy="12" r="3.4"/>
+    <path d="M12 3.4v3.2M12 17.4v3.2M3.4 12h3.2M17.4 12h3.2"/>
+  </symbol>
+  <symbol id="i-documento" viewBox="0 0 24 24">
+    <path d="M13.2 2.8H7.4a2.2 2.2 0 0 0-2.2 2.2v14a2.2 2.2 0 0 0 2.2 2.2h9.2a2.2 2.2 0 0 0 2.2-2.2V8.4z"/>
+    <path d="M13.2 2.8v5.6h5.6"/>
+    <path d="M8.8 13.6h6.4M8.8 16.8h4.2"/>
+  </symbol>
+</svg>
 
 <header class="testata">
   <div class="wrap">
     <a class="marchio" href="index.html">Motopassione</a>
+
     <nav class="nav" aria-label="Navigazione principale">
       <a class="nav-officina" href="#officina">Officina</a>
-      <a href="#restauro">Restauri</a>
+      <a href="#restauri">Restauri</a>
       <a href="#dove">Dove siamo</a>
-      <a class="nav-tel" href="tel:+390678346233">06 78346233</a>
     </nav>
+
+    <div class="azioni-testata">
+      <a class="btn btn-rosso btn-piccolo" href="tel:+390678346233">
+        <svg class="icona"><use href="#i-telefono"></use></svg>Chiama
+      </a>
+      <a class="btn-icona" href="https://wa.me/393802871500?text=Ciao%2C%20vi%20scrivo%20dal%20sito%20Motopassione." target="_blank" rel="noopener" aria-label="Scrivici su WhatsApp">
+        <svg class="icona icona-piena"><use href="#i-whatsapp"></use></svg>
+      </a>
+    </div>
   </div>
 </header>
 
@@ -53,8 +112,7 @@
   <section class="hero">
 
     <div class="hero-foto">
-      <!-- Foto di apertura: è la prima immagine che si carica,
-           quindi niente loading="lazy" qui. -->
+      <!-- Prima immagine della pagina: niente loading="lazy" qui. -->
       <img src="img/officina-pigneto.webp"
            width="480" height="360"
            alt="L'ingresso dell'officina Motopassione in via del Pigneto, con l'insegna dell'assistenza e il marchio Honda"
@@ -62,15 +120,16 @@
     </div>
 
     <div class="wrap hero-testo">
+      <h1>Officina moto<br>al Pigneto,<br>dal 1983</h1>
       <div>
-        <p class="etichetta">Roma, Pigneto &nbsp;&middot;&nbsp; dal 1983</p>
-        <h1>Motopassione</h1>
-      </div>
-      <div>
-        <p class="lead">Officina moto in <strong>via del Pigneto 5G</strong>. Autorizzati Gruppo Piaggio e Honda, ma sotto le mani ci passa di tutto.</p>
+        <p class="lead">Siamo in <strong>via del Pigneto 5G</strong>, a Roma. Autorizzati Gruppo Piaggio e Honda, ma sotto le mani ci passa di tutto: tagliandi, revisioni, gomme e restauri di moto d'epoca.</p>
         <div class="bottoni">
-          <a class="btn btn-rosso" href="tel:+390678346233">Chiama 06 78346233</a>
-          <a class="btn btn-linea" href="https://wa.me/393802871500?text=Ciao%2C%20vi%20scrivo%20dal%20sito%20Motopassione." target="_blank" rel="noopener">Scrivi su WhatsApp</a>
+          <a class="btn btn-rosso" href="tel:+390678346233">
+            <svg class="icona"><use href="#i-telefono"></use></svg>Chiama 06 78346233
+          </a>
+          <a class="btn btn-beige" href="https://wa.me/393802871500?text=Ciao%2C%20vi%20scrivo%20dal%20sito%20Motopassione." target="_blank" rel="noopener">
+            <svg class="icona icona-piena"><use href="#i-whatsapp"></use></svg>WhatsApp
+          </a>
         </div>
       </div>
     </div>
@@ -81,41 +140,40 @@
   <!-- =================================================================
        COSA FACCIAMO
        ================================================================= -->
-  <section class="sezione" id="officina">
+  <section class="sezione sezione-beige" id="officina">
     <div class="wrap">
 
-      <p class="etichetta">Cosa facciamo</p>
       <h2>Moto e scooter,<br>di qualunque marca</h2>
       <p class="lead misura dopo-titolo">Prima si guarda la moto, poi si dice cosa serve e quanto viene. Al ritiro non ci sono sorprese.</p>
 
       <div class="lavori">
 
         <div class="lavoro">
-          <span class="num" aria-hidden="true">01</span>
+          <svg class="icona"><use href="#i-chiave"></use></svg>
           <h3>Tagliandi e riparazioni</h3>
           <p>Manutenzione ordinaria, freni, frizione, catena, impianto elettrico, motore. Sulle moto del Gruppo Piaggio e sulle Honda siamo officina autorizzata, sulle altre marche lavoriamo da sempre lo stesso.</p>
         </div>
 
         <div class="lavoro">
-          <span class="num" aria-hidden="true">02</span>
+          <svg class="icona"><use href="#i-revisione"></use></svg>
           <h3>Revisioni</h3>
           <p>Revisione su appuntamento. Chiama e ti diciamo quando c'è posto.</p>
         </div>
 
         <div class="lavoro">
-          <span class="num" aria-hidden="true">03</span>
+          <svg class="icona"><use href="#i-diagnosi"></use></svg>
           <h3>Diagnosi elettronica</h3>
           <p>Strumentazione TEXA per centraline e impianti. Quando si accende una spia e nessuno capisce il perché, si parte da qui.</p>
         </div>
 
         <div class="lavoro">
-          <span class="num" aria-hidden="true">04</span>
+          <svg class="icona"><use href="#i-gomme"></use></svg>
           <h3>Gomme</h3>
           <p>Montaggio ed equilibratura. Le misure più usate le teniamo in magazzino, le altre le ordiniamo.</p>
         </div>
 
         <div class="lavoro">
-          <span class="num" aria-hidden="true">05</span>
+          <svg class="icona"><use href="#i-documento"></use></svg>
           <h3>Pratiche CID</h3>
           <p>Riparazioni su modulo CID con la pratica seguita da noi. Siamo convenzionati Genertel.</p>
         </div>
@@ -129,29 +187,27 @@
 
 
   <!-- =================================================================
-       RESTAURO MOTO D'EPOCA
+       RESTAURI
        ================================================================= -->
-  <section class="sezione sezione-alta" id="restauro">
+  <section class="sezione" id="restauri">
+    <div class="wrap">
 
-    <div class="wrap restauro-intro">
-      <p class="etichetta">Restauro moto d'epoca</p>
-      <h2>Il lavoro che<br>ci piace di più</h2>
-      <div class="prosa misura-l testo-soft dopo-titolo">
-        <p>Le moto d'epoca arrivano quasi sempre nello stesso stato: ferme da anni in un garage, con la benzina secca dentro al carburatore e la ruggine che ha fatto il suo lavoro. Si smonta tutto, si guarda pezzo per pezzo cosa si recupera e cosa va buttato, poi si rimette insieme come stava.</p>
-        <p>I ricambi originali si tengono, quando ci sono e quando sono ancora sani. Il resto si sostituisce con roba giusta, non con quello che capita. La verniciatura si rifà sul colore che aveva la moto, non su quello che va di moda adesso.</p>
+      <div class="restauri-intro">
+        <p class="etichetta">Restauro moto d'epoca</p>
+        <h2>Il lavoro che ci piace di più</h2>
+        <div class="prosa dopo-titolo">
+          <p>Le moto d'epoca arrivano quasi sempre nello stesso stato: ferme da anni in un garage, con la benzina secca dentro al carburatore e la ruggine che ha fatto il suo lavoro. Si smonta tutto, si guarda pezzo per pezzo cosa si recupera e cosa va buttato, poi si rimette insieme come stava.</p>
+          <p>I ricambi originali si tengono, quando ci sono e quando sono ancora sani. La verniciatura si rifà sul colore che aveva la moto, non su quello che va di moda adesso.</p>
+        </div>
       </div>
-    </div>
 
-    <figure class="foto-piena">
-      <img src="img/vespa-restaurata.webp"
-           width="480" height="360"
-           alt="Vespa d'epoca restaurata, verniciata verde chiaro"
-           loading="lazy" decoding="async">
-    </figure>
-
-    <div class="wrap restauro-coda">
-
-      <p class="didascalia">Vespa restaurata, a lavoro finito.</p>
+      <figure class="foto-grande">
+        <img src="img/vespa-restaurata.webp"
+             width="480" height="360"
+             alt="Vespa d'epoca restaurata, verniciata verde chiaro"
+             loading="lazy" decoding="async">
+        <figcaption class="didascalia">Vespa, restauro completo.</figcaption>
+      </figure>
 
       <div class="coppia">
         <figure>
@@ -170,19 +226,21 @@
         </figure>
       </div>
 
-      <a class="link-avanti" href="restauri/ducati-250-match1.html">
-        Guarda tutto il restauro <span class="freccia" aria-hidden="true">&rarr;</span>
-      </a>
+      <div class="restauri-coda">
+        <a class="btn btn-nero" href="restauri/ducati-250-match1.html">
+          Il restauro della Ducati 250 Mach 1
+          <svg class="icona"><use href="#i-freccia"></use></svg>
+        </a>
+      </div>
 
     </div>
-
   </section>
 
 
   <!-- =================================================================
        DAL 1983
        ================================================================= -->
-  <section class="sezione">
+  <section class="sezione sezione-beige">
     <div class="wrap">
 
       <div class="storia">
@@ -193,9 +251,8 @@
                loading="lazy" decoding="async">
         </div>
         <div>
-          <p class="etichetta">Dal 1983</p>
           <h2>Sempre qui</h2>
-          <div class="prosa testo-soft dopo-titolo">
+          <div class="prosa dopo-titolo">
             <p>Enrico Vilmercati ha aperto l'officina nel 1983 e da allora non si è mai spostata. In via del Pigneto sono cambiati i negozi, i locali e mezzo quartiere, noi siamo rimasti dove eravamo.</p>
             <p>Il lavoro ce lo porta il passaparola. Chi viene si fida, torna, e dopo un po' arriva col figlio e il primo cinquantino.</p>
           </div>
@@ -209,33 +266,34 @@
   <!-- =================================================================
        DOVE SIAMO E ORARI
        ================================================================= -->
-  <section class="sezione sezione-alta" id="dove">
+  <section class="sezione" id="dove">
     <div class="wrap">
 
-      <p class="etichetta">Dove siamo</p>
+      <h2>Dove siamo</h2>
 
       <div class="dove">
 
-        <div>
-          <h3>Indirizzo</h3>
+        <div class="riquadro">
+          <p class="titolino"><svg class="icona"><use href="#i-posizione"></use></svg>Indirizzo</p>
           <address class="indirizzo">
             Via del Pigneto 5G<br>
             00176 Roma
           </address>
-          <a class="link-mappa"
-             href="https://www.google.com/maps/search/?api=1&amp;query=Motopassione%2C%20Via%20del%20Pigneto%205G%2C%2000176%20Roma"
-             target="_blank" rel="noopener">Apri su Google Maps</a>
+          <div class="bottoni dopo-titolo">
+            <a class="btn btn-nero btn-piccolo"
+               href="https://www.google.com/maps/search/?api=1&amp;query=Motopassione%2C%20Via%20del%20Pigneto%205G%2C%2000176%20Roma"
+               target="_blank" rel="noopener">Apri su Google Maps</a>
+          </div>
         </div>
 
-        <div>
-          <h3>Orari</h3>
-          <!-- SEGNAPOSTO: quando arrivano gli orari veri, sostituire questo
-               riquadro con il testo degli orari e aggiungere il blocco
-               openingHoursSpecification nel JSON-LD in fondo alla pagina. -->
-          <div class="segnaposto">
-            <strong>Orari da confermare</strong>
-            Gli orari di apertura non sono ancora stati confermati. Vanno inseriti qui e nel JSON-LD in fondo a questa pagina prima di mandare online il sito.
-          </div>
+        <div class="riquadro">
+          <p class="titolino"><svg class="icona"><use href="#i-orologio"></use></svg>Orari</p>
+          <dl class="orari">
+            <dt>Da lunedì a venerdì</dt>
+            <dd>9:00 - 13:00<br>15:30 - 19:30</dd>
+            <dt>Sabato e domenica</dt>
+            <dd>Chiuso</dd>
+          </dl>
         </div>
 
       </div>
@@ -250,23 +308,29 @@
   <section class="sezione contatti su-scuro" id="contatti">
     <div class="wrap">
 
-      <p class="etichetta">Contatti</p>
       <h2>Chiamaci</h2>
       <p class="lead dopo-titolo">Per un preventivo, un appuntamento, o solo per sapere se il pezzo c'è.</p>
 
       <div class="bottoni">
-        <a class="btn btn-rosso" href="tel:+390678346233">Chiama 06 78346233</a>
-        <a class="btn btn-linea" href="https://wa.me/393802871500?text=Ciao%2C%20vi%20scrivo%20dal%20sito%20Motopassione." target="_blank" rel="noopener">Scrivi su WhatsApp</a>
+        <a class="btn btn-rosso" href="tel:+390678346233">
+          <svg class="icona"><use href="#i-telefono"></use></svg>Chiama 06 78346233
+        </a>
+        <a class="btn btn-beige" href="https://wa.me/393802871500?text=Ciao%2C%20vi%20scrivo%20dal%20sito%20Motopassione." target="_blank" rel="noopener">
+          <svg class="icona icona-piena"><use href="#i-whatsapp"></use></svg>WhatsApp
+        </a>
       </div>
 
       <p class="sottotesto">Su WhatsApp mandaci le foto della moto e il modello: ti rispondiamo con quello che c'è da fare e quanto costa.</p>
 
-      <p class="altri-contatti">
-        Email <a href="mailto:info@motopassione.eu">info@motopassione.eu</a>
-        &nbsp;&middot;&nbsp;
+      <div class="altri-contatti">
+        <a href="mailto:info@motopassione.eu">
+          <svg class="icona"><use href="#i-mail"></use></svg>info@motopassione.eu
+        </a>
         <!-- VERIFICARE l'indirizzo esatto della pagina Facebook prima di pubblicare -->
-        Facebook <a href="https://www.facebook.com/motopassione" target="_blank" rel="noopener">Motopassione</a>
-      </p>
+        <a href="https://www.facebook.com/motopassione" target="_blank" rel="noopener">
+          <svg class="icona icona-piena"><use href="#i-facebook"></use></svg>Motopassione
+        </a>
+      </div>
 
     </div>
   </section>
@@ -287,15 +351,18 @@
      BARRA CONTATTI, SOLO TELEFONO
      =================================================================== -->
 <div class="barra-contatti">
-  <a class="b-chiama" href="tel:+390678346233">Chiama</a>
-  <a class="b-wa" href="https://wa.me/393802871500?text=Ciao%2C%20vi%20scrivo%20dal%20sito%20Motopassione." target="_blank" rel="noopener">WhatsApp</a>
+  <a class="b-chiama" href="tel:+390678346233">
+    <svg class="icona"><use href="#i-telefono"></use></svg>Chiama
+  </a>
+  <a class="b-wa" href="https://wa.me/393802871500?text=Ciao%2C%20vi%20scrivo%20dal%20sito%20Motopassione." target="_blank" rel="noopener">
+    <svg class="icona icona-piena"><use href="#i-whatsapp"></use></svg>WhatsApp
+  </a>
 </div>
 
 
 <!-- ===================================================================
      DATI STRUTTURATI PER GOOGLE (schema.org)
-     Da aggiornare: le coordinate geo sono approssimate, vanno prese da
-     Google Maps. Gli orari vanno aggiunti quando sono confermati.
+     Le coordinate geo sono approssimate, vanno prese da Google Maps.
      =================================================================== -->
 <script type="application/ld+json">
 {
@@ -326,6 +393,20 @@
   "hasMap": "https://www.google.com/maps/search/?api=1&query=Motopassione%2C%20Via%20del%20Pigneto%205G%2C%2000176%20Roma",
   "areaServed": { "@type": "City", "name": "Roma" },
   "sameAs": [ "https://www.facebook.com/motopassione" ],
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      "opens": "09:00",
+      "closes": "13:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      "opens": "15:30",
+      "closes": "19:30"
+    }
+  ],
   "makesOffer": [
     { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Tagliandi e riparazioni moto" } },
     { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Revisione moto e scooter" } },
@@ -336,31 +417,6 @@
   ]
 }
 </script>
-
-<!-- Quando gli orari sono confermati, incollare questo blocco dentro il
-     JSON-LD qui sopra, subito dopo "areaServed", correggendo giorni e ore:
-
-  "openingHoursSpecification": [
-    {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
-      "opens": "08:30",
-      "closes": "13:00"
-    },
-    {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
-      "opens": "15:00",
-      "closes": "19:00"
-    },
-    {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": "Saturday",
-      "opens": "08:30",
-      "closes": "13:00"
-    }
-  ],
--->
 
 </body>
 </html>
