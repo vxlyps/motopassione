@@ -56,7 +56,7 @@
   --beige:      #f5f2ec;   /* fondo delle sezioni in evidenza */
   --beige-cupo: #ece7dd;   /* superfici dentro il beige */
   --nero:       #16181d;   /* testo, e fondo del blocco contatti */
-  --nero-alto:  #21242b;   /* superfici dentro il nero */
+  --nero-cupo:  #0f1115;   /* piede pagina, stacca senza bisogno di righe */
   --testo-2:    #595e68;   /* testo secondario */
   --testo-3:    #686d77;   /* etichette, didascalie */
   --rosso:      #d0281e;   /* accento: solo cose da cliccare */
@@ -421,35 +421,79 @@ p { text-wrap: pretty; }
 
 /* =========================================================================
    9. APERTURA
+   Foto a tutta pagina con sopra un velo scuro, e il titolo appoggiato
+   in basso. La testata sta sopra la foto, quindi va in bianco.
    ========================================================================= */
+
+/* Testata sopra la foto: esce dal flusso e si appoggia sull'apertura.
+   Funziona perche' l'apertura e' il primo blocco della pagina. */
+.testata-chiara {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 5;
+  color: #fff;
+}
+.testata-chiara .nav a { color: rgba(255, 255, 255, 0.78); }
+.testata-chiara .nav a:hover { color: #fff; }
+.testata-chiara .btn-icona { background: rgba(255, 255, 255, 0.16); color: #fff; }
+.testata-chiara .btn-icona:hover { background: rgba(255, 255, 255, 0.26); }
+
+.hero {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  min-height: 78vh;
+  min-height: 78svh;
+  padding-block: 7rem var(--sp-xl);
+  overflow: hidden;
+  color: #fff;
+}
+
+.hero-foto {
+  position: absolute;
+  inset: 0;
+}
 
 .hero-foto img {
   width: 100%;
-  aspect-ratio: 4 / 3;   /* le foto originali sono 4:3, così non si ingrandiscono */
+  height: 100%;
   object-fit: cover;
 }
 
-.hero-testo { padding-block: var(--sp-xl) var(--sezione); }
-.hero-testo h1 { margin-bottom: var(--sp-m); }
-
-.hero-testo .lead {
-  max-width: 34rem;
-  margin-bottom: var(--sp-l);
+/* il velo che rende leggibile il titolo: tinta piatta, niente sfumature */
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 11, 13, 0.56);
 }
 
-@media (min-width: 56em) {
-  .hero-foto img { aspect-ratio: 21 / 8; }
+.hero-contenuto {
+  position: relative;
+  z-index: 2;
+}
 
-  /* titolo a sinistra, testo e pulsanti a destra, allineati in alto */
-  .hero-testo {
-    display: grid;
-    grid-template-columns: 1.1fr 1fr;
-    gap: var(--sp-xl);
-    align-items: start;
-    padding-block: var(--sp-xl);
+.hero-contenuto h1 {
+  max-width: 18ch;
+  margin-bottom: var(--sp-m);
+}
+
+.hero-contenuto .lead {
+  max-width: 34rem;
+  margin-bottom: var(--sp-l);
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.hero-contenuto .lead strong { color: #fff; }
+
+@media (min-width: 56em) {
+  .hero {
+    min-height: 84vh;
+    min-height: 84svh;
+    padding-block: 8rem var(--sezione);
   }
-  .hero-testo h1 { margin-bottom: 0; }
-  .hero-testo .lead { margin-bottom: var(--sp-m); }
 }
 
 
@@ -561,12 +605,20 @@ p { text-wrap: pretty; }
 
 /* =========================================================================
    13. DOVE SIAMO
+   A sinistra la mappa disegnata (sta in linea dentro alla pagina, non e'
+   un servizio esterno, quindi niente cookie), a destra indirizzo e orari.
    ========================================================================= */
 
 .dove {
   display: grid;
   gap: 0.875rem;
   margin-top: var(--sp-xl);
+}
+
+.dove-schede {
+  display: grid;
+  gap: 0.875rem;
+  align-content: start;
 }
 
 .riquadro {
@@ -594,7 +646,7 @@ p { text-wrap: pretty; }
   line-height: 1.35;
 }
 
-/* tabella degli orari: niente righe, le fasce si distinguono da sole */
+/* orari: niente righe, bastano due colonne */
 .orari {
   display: grid;
   grid-template-columns: auto 1fr;
@@ -605,8 +657,60 @@ p { text-wrap: pretty; }
 .orari dt { font-weight: 600; }
 .orari dd { margin: 0; color: var(--testo-2); font-variant-numeric: tabular-nums; }
 
-@media (min-width: 46em) {
-  .dove { grid-template-columns: 1fr 1fr; gap: 1rem; }
+/* --- la mappa ----------------------------------------------------------
+   E' un disegno SVG fatto a mano nei colori del sito. Non e' in scala,
+   serve a capire la zona: cliccandola si apre Google Maps. */
+
+.mappa {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  border-radius: var(--raggio-g);
+  background: var(--beige);
+  text-decoration: none;
+}
+
+.mappa svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Sul telefono la mappa e' piccola: il richiamo diventa una barra piena
+   in fondo alla scheda, cosi' non copre il segnaposto. Da desktop, dove
+   c'e' spazio, torna a essere un pulsante appoggiato sopra la mappa. */
+.mappa-azione {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.9375rem 1rem;
+  background: var(--nero);
+  color: #fff;
+  font-size: var(--t-piccolo);
+  font-weight: 600;
+}
+.mappa:hover .mappa-azione { background: #000; }
+.mappa-azione .icona { width: 1.0625rem; height: 1.0625rem; }
+
+@media (min-width: 56em) {
+  .mappa-azione {
+    position: absolute;
+    right: 1.25rem;
+    bottom: 1.25rem;
+    display: inline-flex;
+    padding: 0.625rem 1rem;
+    border-radius: var(--raggio);
+  }
+}
+
+@media (min-width: 56em) {
+  .dove {
+    grid-template-columns: 1.35fr 1fr;
+    gap: 1rem;
+    align-items: start;
+  }
+  .dove-schede { gap: 1rem; }
 }
 
 
@@ -651,13 +755,19 @@ p { text-wrap: pretty; }
    ========================================================================= */
 
 .piede {
-  background: var(--nero);
+  background: var(--nero-cupo);
   color: rgba(255, 255, 255, 0.45);
   padding-block: var(--sp-l);
   font-size: var(--t-micro);
 }
 
-.piede .wrap { display: grid; gap: var(--sp-xs); }
+.piede .wrap {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--sp-xs) var(--sp-l);
+}
 .piede a { color: rgba(255, 255, 255, 0.62); }
 
 
